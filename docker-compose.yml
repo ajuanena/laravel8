@@ -44,6 +44,19 @@ services:
     networks:
       - travellist
 
+  phpmyadmin:
+      image: phpmyadmin/phpmyadmin
+      container_name: travellist-phpmyadmin
+      restart: always
+      environment:
+        PMA_HOST: db
+        PMA_USER: travellist_user
+        PMA_PASSWORD: password
+      ports:
+        - "8080:80"
+      networks:
+        - travellist
+
 networks:
   travellist:
     driver: bridge

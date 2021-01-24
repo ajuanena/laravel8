@@ -1,0 +1,12 @@
+docker-compose build app
+docker-compose up -d
+
+
+Despues del build:
+
+CREATE USER 'txingudi_user'@'%.%.%.%' IDENTIFIED BY 'password'; GRANT ALL PRIVILEGES ON *.* TO 'travellist_user'@'%.%.%.%' WITH GRANT OPTION; 
+FLUSH PRIVILEDGES;
+
+
+
+docker-compose exec app php artisan migrate:rollback

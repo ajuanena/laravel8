@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{mix('css/app.css')}}">
-    <link rel="stylesheet" href="{{url('plugins/fontawesome-free/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{url('adminlte/bower_components/font-awesome/css/all.min.css')}}">
     <link rel="stylesheet" href="{{url('adminlte/css/adminlte.min.css')}}">
     <link rel="stylesheet" href="{{url('adminlte/css/custom.css')}}">
     <title>
@@ -25,7 +25,7 @@
     <div class="card-body login-card-body">
         <div align="center"><img src="/assets/img/logo.png" alt="Txingudi BHI" width="25%" height="25%"></div><br/>
         
-      <p class="login-box-msg">Introduce tus datos para iniciar sesión</p>
+      <p class="login-box-msg">Sartu zure datuak</p>
 
       <form method="POST" action="{{ route('login') }}">
         @csrf
@@ -55,15 +55,7 @@
                 <strong>{{ $message }}</strong>
             </span>
         @enderror
-        <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-              <label for="remember">
-                Remember Me s
-              </label>
-            </div>
-          </div>
+        
           <!-- /.col -->
           <div class="col-4">
             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
@@ -71,13 +63,6 @@
           <!-- /.col -->
         </div>
       </form>
-
-      <p class="mb-1">
-        <a href="forgot-password.html" href="{{ route('password.request') }}">I forgot my password</a>
-      </p>
-      <p class="mb-1">
-        <a href="{{ route('register') }}">¿Necesitas una cuentaaa? Regístrate ahora</a>
-      </p>
 
       
     </div>

@@ -1,36 +1,42 @@
+
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="es">
+  <head>
+      <meta charset="utf-8">
+      <title>Txingudi BHI</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="Autentification">
+      <meta name="author" content="ajuanenama">
+      <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+      <link rel="shortcut icon" href="{{ asset("favicon.png") }}" type="image/png">
+      <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
+      <link rel="stylesheet" href="{{ url("font-awesome/css/font-awesome.min.css") }}">
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+      <script src="{{asset('assets/lib/chartjs/Chart.bundle.min.js')}}"></script>
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+  </head>
 
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+  <body>
+    @if(Auth::check())
+        @include("elements.usernavbar")
+    @else
+        @include("elements.navbar")
+    @endif
 
-            <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
+      <br><br><br><br>
+      <main role="main" class="container">
+          @if(session()->has('info'))
+            <div class="container">
+              <div class="alert alert-info">{{session('info')}}</div>
+            </div>
+          @endif
+          @yield("content")
+      </main>
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
-    </body>
+  </body>
+  <script src="{{asset('assets/js/jquery-3.2.1.slim.min.js')}}" ></script>
+  <script src="{{asset('assets/js/popper.min.js')}}"></script>
+  <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+
 </html>

@@ -18,8 +18,20 @@ Route::get('/', function () {
 })->name('main');
 
 Route::get('/home', function () {
-    return view('home');
-});
+    return view('home/dashboard');
+})->name('home.dashboard');
+
+Route::get('/home/profile', function () {
+    return view('home/profile');
+})->name('home.profile');
+
+Route::get('/home/messages', function () {
+    return view('home/messages');
+})->name('home.messages');
+
+//Route::get('home', 'HomeController@dashboard')->name('home.dashboard');
+//Route::get('home/profile', 'HomeController@profile')->name('home.profile');
+//Route::get('home/messages', 'HomeController@messages')->name('home.messages');
 
 Route::get('/admin', function () {
     return view('admin/dashboard');
